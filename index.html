@@ -4,44 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>비상 AI Loop: AI 스쿨 모집</title>
-    <!-- Tailwind CSS CDN 로드 -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Font - Inter & Noto Sans KR -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Inter:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    
     <style>
-        /* 커스텀 폰트 설정 (Inter와 Noto Sans KR을 기본으로 사용) */
+        /* --- 🎨 커스텀 색상 및 폰트 변수 --- */
         :root {
-            --font-main: 'Noto Sans KR', 'Inter', sans-serif;
+            --color-deep-space: #0d0c1d; /* body 배경색 */
+            --color-violet-main: #8b5cf6; /* violet-500 */
+            --color-yellow-main: #fde047; /* yellow-400 */
+            /* 🌟 본문 폰트는 Noto Sans KR로 지정 (가독성) */
+            --font-body: 'Noto Sans KR', 'Inter', sans-serif; 
+            /* 🌟 제목 폰트는 Do Hyeon으로 지정 (강렬함) */
+            --font-title: 'Do Hyeon', 'Noto Sans KR', sans-serif;
         }
+        
         body {
-            font-family: var(--font-main);
-            background-color: #0d0c1d; /* 깊은 우주색 */
-            color: #e5e7eb; /* 밝은 회색 텍스트 */
+            font-family: var(--font-body); /* 본문 폰트 적용 */
+            background-color: var(--color-deep-space); 
+            color: #e5e7eb;
             line-height: 1.6;
-            margin: 0; /* body 기본 마진 제거 */
+            margin: 0;
             padding: 0;
         }
-        .container {
-            max-width: 1200px;
+        
+        /* 🌟 제목 폰트: Do Hyeon 강제 적용 🌟 */
+        h1, h2, h3 {
+            font-family: var(--font-title);
         }
+
         /* Gradient for Headings/Highlights (Yellow to Violet) */
         .text-gradient {
-            background-image: linear-gradient(45deg, #fde047, #8b5cf6); /* yellow-400 to violet-500 */
+            background-image: linear-gradient(45deg, var(--color-yellow-main), var(--color-violet-main));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Interactive Card Hover Effect (Violet Shadow/Border) */
+        
+        /* Interactive Card Hover Effect (입체감 개선) */
         .hover-card {
             transition: all 0.3s ease;
             transform: translateY(0);
         }
         .hover-card:hover {
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3); /* violet-500 shadow */
-            transform: translateY(-5px) scale(1.02);
-            border-color: #8b5cf6; /* violet-500 hover border */
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5); /* 그림자 진하게 */
+            transform: translateY(-5px) scale(1.01); 
+            border-color: var(--color-violet-main);
         }
         
-        /* AI Loop Diagram Styling */
+        /* --- 🌟 AI Loop Diagram Styling (입체감/애니메이션 개선) 🌟 --- */
         .loop-container {
             position: relative;
             display: flex;
@@ -49,53 +60,77 @@
             align-items: center;
             gap: 2rem;
             max-width: 800px;
-            margin: 2rem auto; /* 마진 줄임 */
+            margin: 4rem auto;
         }
         .loop-node {
-            min-width: 200px; /* 가로 확장 */
-            min-height: 150px;
+            min-width: 190px;
+            min-height: 190px;
             padding: 1.5rem 1rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-radius: 50%; /* 원형 유지 */
+            border-radius: 50%;
             text-align: center;
             font-weight: bold;
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
-            animation: bounce-in 1s ease-out;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.6), 0 0 50px rgba(139, 92, 246, 0.2); /* 이중 그림자 */
+            animation: pop-in 0.8s ease-out forwards;
             position: relative;
             z-index: 10;
+            backdrop-filter: blur(5px); /* 배경 분리감 */
         }
+        
+        @keyframes pop-in {
+            0% { opacity: 0; transform: scale(0.5) }
+            80% { opacity: 1; transform: scale(1.05) }
+            100% { opacity: 1; transform: scale(1) }
+        }
+        
         .loop-node p {
-            font-size: 0.95rem; /* 폰트 사이즈 조정 */
+            font-size: 1.1rem; 
             line-height: 1.3;
+            font-weight: 700; /* Noto Sans KR의 굵기 활용 */
         }
         .loop-node-school {
-            background: linear-gradient(135deg, #8b5cf6, #5b21b6); /* violet-500 to violet-700 */
-            border: 3px solid #fde047;
+            background: rgba(139, 92, 246, 0.7);
+            border: 4px solid var(--color-yellow-main); 
         }
         .loop-node-lab {
-            background: linear-gradient(135deg, #fde047, #fbbf24);
-            border: 3px solid #8b5cf6; /* violet-500 border */
+            background: rgba(253, 224, 71, 0.8);
+            border: 4px solid var(--color-violet-main);
             cursor: pointer;
+            color: #1f2937; 
         }
+        
+        /* 움직이는 화살표 */
         .loop-arrow {
             position: absolute;
             width: 100%;
-            height: 4px;
-            background: repeating-linear-gradient(-45deg, #8b5cf6, #8b5cf6 10px, transparent 10px, transparent 20px); /* violet-500 arrow */
-            opacity: 0.5;
+            height: 8px; 
+            background: #8b5cf6; 
+            opacity: 1; 
             top: 50%;
             left: 0;
             z-index: 5;
             transform: translateY(-50%);
+            mask-image: repeating-linear-gradient(to right, black 0px, black 10px, transparent 10px, transparent 20px);
+            mask-size: 40px 100%;
+            animation: move-arrow 2s linear infinite;
         }
         
-        /* AI Lab D-Day Countdown Styling (Violet center/border) */
+        @keyframes move-arrow {
+            from {
+                mask-position: 0 0;
+            }
+            to {
+                mask-position: -40px 0;
+            }
+        }
+        
+        /* AI Lab D-Day Countdown Styling */
         .lab-teaser {
-            background: linear-gradient(90deg, #1f2937 0%, #4c1d95 50%, #1f2937 100%); /* Darker violet center */
-            border: 2px solid #8b5cf6; /* violet-500 */
+            background: linear-gradient(90deg, #1f2937 0%, #4c1d95 50%, #1f2937 100%);
+            border: 2px solid var(--color-violet-main);
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
             animation: pulse 4s infinite ease-in-out;
         }
@@ -104,6 +139,7 @@
             50% { transform: scale(1.005); opacity: 0.95; }
         }
         
+        /* --- 모바일 반응형 (Loop Arrow 수정) --- */
         @media (max-width: 640px) {
             .loop-container {
                 flex-direction: column;
@@ -113,85 +149,77 @@
             .loop-arrow {
                 height: auto;
                 width: 4px;
-                background: repeating-linear-gradient(0deg, #8b5cf6, #8b5cf6 10px, transparent 10px, transparent 20px); /* violet-500 arrow */
+                background: repeating-linear-gradient(0deg, var(--color-violet-main), var(--color-violet-main) 10px, transparent 10px, transparent 20px);
                 left: 50%;
-                top: 150px; /* Adjust based on node size */
-                bottom: 150px;
+                top: 180px; 
+                bottom: 180px;
                 transform: translateX(-50%);
+                /* 모바일 세로 화살표는 움직이는 효과 제거 (복잡도 감소) */
+                mask-image: none;
+                animation: none;
+                background-image: linear-gradient(0deg, var(--color-violet-main), var(--color-violet-main));
             }
             .loop-node {
-                min-width: unset; /* 모바일에서는 다시 원래대로 */
-                width: 150px;
+                min-width: unset;
+                width: 180px;
             }
         }
 
-        /* --- SCROLL REVEAL ANIMATION (Initial elements excluded) --- */
+        /* --- SCROLL REVEAL ANIMATION (애니메이션 스타일 유지) --- */
         .scroll-reveal {
             opacity: 0;
-            transform: translateY(25px); /* 시작 위치를 아래로 25px 이동 */
+            transform: translateY(25px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        /* Hero Section과 AI Loop Diagram 섹션은 기본적으로 visible 상태로 시작 */
         .hero-title-section, .ai-loop-intro {
             opacity: 1;
             transform: translateY(0);
         }
         .scroll-reveal.visible {
             opacity: 1;
-            transform: translateY(0); /* 보일 때 원래 위치로 이동 */
+            transform: translateY(0);
         }
         
-        /* Hero Section 높이 조정 (간격 줄임) */
+        /* Hero Section 높이 조정 */
         .hero-title-section {
             padding-top: 10vh;
-            height: 40vh; /* 높이를 줄여서 다음 섹션과 간격 줄임 */
+            height: 40vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
         }
-        /* 섹션 간 마진 조정 */
         section {
-            margin-bottom: 5rem; /* 기본 5rem (80px) */
+            margin-bottom: 5rem;
         }
         
         /* 이모지/아이콘 뒤 텍스트 정렬을 위한 스타일 */
         .aligned-text {
             display: flex;
             align-items: flex-start;
-            line-height: 1.6; /* 줄 높이 조정 */
+            line-height: 1.6;
         }
         .aligned-text .icon-box {
             display: inline-block;
-            margin-right: 0.75rem; /* mr-3 */
-            margin-top: 0.1rem; /* 미세 조정 */
+            margin-right: 0.75rem;
+            margin-top: 0.1rem;
             flex-shrink: 0;
-            color: inherit; /* 이모지 색상 강제 상속 방지 */
-            font-size: 1.5em; /* 이모지 크기 키우기 */
-            line-height: 1; /* 이모지 자체의 줄 높이 */
+            font-size: 1.5em;
+            line-height: 1;
         }
-        .aligned-text .icon-box i {
-            color: inherit; /* 폰트어썸 아이콘은 상속받게 둠 */
-        }
-        .aligned-text .text-content {
-            flex-grow: 1;
-            display: inline-block;
-        }
-        /* 이모지 색상 깨짐 방지 */
+        /* Gradient 텍스트에 이모지가 섞일 경우 색상 깨짐 방지 */
         .emoji-no-gradient {
             -webkit-background-clip: unset !important;
             -webkit-text-fill-color: initial !important;
         }
     </style>
-    <!-- 폰트어썸 아이콘 -->
     <script src="https://kit.fontawesome.com/c4866f56d9.js" crossorigin="anonymous"></script>
 </head>
 <body class="p-4 sm:p-8">
 
     <div class="container mx-auto">
 
-        <!-- 1. AI Loop 히어로 & 컨셉 소개 (Hero Section) - 애니메이션 제외 -->
         <header class="hero-title-section mb-8 ai-loop-intro">
             <h1 class="text-6xl sm:text-7xl font-extrabold mb-4 leading-tight text-gradient">
                 비상 AI Loop ∞
@@ -204,7 +232,6 @@
             </p>
         </header>
         
-        <!-- 2. AI Loop 컨셉 시각화 (스쿨과 랩) - 애니메이션 제외 -->
         <section class="mb-20 text-center ai-loop-intro">
             <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10 text-violet-300">
                 비상 AI Loop ∞: CP님의 실행과 확장 🔄
@@ -212,22 +239,20 @@
             <div class="loop-container">
                 <div class="loop-node loop-node-school text-white">
                     <i class="fas fa-seedling text-3xl mb-1"></i>
-                    <p class="text-4xl">AI스쿨</p>
-                    <p class="text-sm font-normal mt-1"><strong>작게라도 내가</strong><br><strong>직접 시도해볼 수 있을까?</strong></p>
+                    <p class="text-3xl">AI스쿨</p>
+                    <p class="text-base font-normal mt-1"><strong>작게라도 내가</strong><br><strong>직접 시도해볼 수 있을까?</strong></p>
                 </div>
                 
                 <div class="loop-arrow absolute top-1/2 left-0 right-0 sm:top-1/2 sm:left-auto sm:right-auto"></div>
 
                 <div class="loop-node loop-node-lab text-gray-900" onclick="document.getElementById('lab-teaser').scrollIntoView({ behavior: 'smooth' });">
                     <i class="fas fa-flask text-3xl mb-1"></i>
-                    <p class="text-4xl"><strong>AI랩</strong></p>
-                    <p class="text-sm font-normal mt-1"><strong>조직의 고민을,</strong><br><strong>AI를 활용해 도전해볼 수 있을까?</strong></p>
+                    <p class="text-3xl"><strong>AI랩</strong></p>
+                    <p class="text-base font-normal mt-1"><strong>조직의 고민을,</strong><br><strong>AI를 활용해 도전해볼 수 있을까?</strong></p>
                 </div>
             </div>
             
-            <!-- 구조화된 설명 카드 (AI School 소개) -->
             <div class="max-w-4xl mx-auto mt-10 grid md:grid-cols-2 gap-6 text-left">
-                <!-- AI스쿨 설명 카드 -->
                 <div class="p-6 bg-gray-700/50 border border-violet-500 rounded-xl shadow-lg hover-card">
                     <h3 class="text-2xl font-bold text-violet-300 mb-2 flex items-center">
                         <i class="fas fa-rocket mr-3 text-yellow-400"></i> AI스쿨: 내 업무 1개 완주하기
@@ -236,7 +261,6 @@
                         막막했던 AI 활용, 작게라도 내가 직접 만들어볼까?<br>AI 실행 습관을 만드는 첫 단계입니다. <br>내 업무 1개를 AI 기반으로 완주하고,<br>채팅에서 실제 업무 도구로 전환합니다.
                     </p>
                 </div>
-                <!-- AI 랩 설명 카드 -->
                 <div class="p-6 bg-gray-700/50 border border-yellow-500 rounded-xl shadow-lg hover-card">
                     <h3 class="text-2xl font-bold text-yellow-300 mb-2 flex items-center">
                         <i class="fas fa-chart-bar mr-3 text-violet-400"></i> AI랩: 조직 솔루션 제안하기
@@ -248,10 +272,9 @@
             </div>
         </section>
 
-        <!-- 4. AI 스쿨: 모집 포커스 -->
         <section class="mb-20 text-center scroll-reveal">
             <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 text-gradient">
-                #1 AI 스쿨 (AI School) <span class="emoji-default-color">🍎</span>
+                #1 AI 스쿨 (AI School) <span class="emoji-no-gradient">🍎</span>
             </h2>
             <p class="text-xl font-medium text-gray-300 mb-10">
                 AI 활용이 아직 막연한 <strong>CP님</strong>들을 위한 첫걸음! <br>
@@ -259,7 +282,6 @@
             </p>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Pain → 해결 1 -->
                 <div class="hover-card bg-gray-800 p-6 rounded-2xl border-b-4 border-violet-500 shadow-lg text-left">
                     <div class="text-center">
                         <i class="fas fa-comment-dots text-3xl text-violet-400 mb-3 block"></i>
@@ -268,7 +290,6 @@
                     <p class="text-sm text-gray-400 font-bold mb-2">➡️ 실제 업무 도구로 전환</p>
                     <p class="text-sm text-gray-400">AI로 업무 프로세스를 차근차근 축소시켜보아요. (단순 질문 이제 그만!)</p>
                 </div>
-                <!-- Pain → 해결 2 -->
                 <div class="hover-card bg-gray-800 p-6 rounded-2xl border-b-4 border-yellow-500 shadow-lg text-left">
                     <div class="text-center">
                         <i class="fas fa-stopwatch text-3xl text-yellow-400 mb-3 block"></i>
@@ -277,7 +298,6 @@
                     <p class="text-sm text-gray-400 font-bold mb-2">➡️교수님과 팀으로 4주 완주</p>
                     <p class="text-sm text-gray-400">질문–수정–적용으로 결과물을 도출합니다. <br>(혼자 미루는 비효율 해결! 💪)</p>
                 </div>
-                <!-- Pain → 해결 3 -->
                 <div class="hover-card bg-gray-800 p-6 rounded-2xl border-b-4 border-red-500 shadow-lg text-left">
                     <div class="text-center">
                         <i class="fas fa-briefcase text-3xl text-red-400 mb-3 block"></i>
@@ -289,44 +309,37 @@
             </div>
         </section>
 
-        <!-- 5. AI 스쿨: 운영 설계: 쉽게 · 짧게 · 꾸준히 (수정된 운영안 반영) -->
         <section class="mb-20 scroll-reveal">
             <h2 class="text-3xl font-bold text-center mb-10 text-violet-300">이렇게 진행돼요 — 쉽게, 짧게, 꾸준히 ⚙️</h2>
             <div class="bg-gray-800 p-8 rounded-3xl shadow-2xl border border-gray-700 max-w-6xl mx-auto">
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- 카드 1: 구성 (6인으로 수정) -->
                     <div class="hover-card p-6 bg-gray-700 rounded-xl border border-gray-600">
                         <i class="fas fa-users text-2xl text-yellow-400 mb-2"></i>
                         <p class="text-base font-bold mb-1">👥 구성</p>
                         <p class="text-gray-300 text-sm">총 12명 · 6인 2팀으로 운영됩니다. 함께 목표를 정하고, 서로 응원하며 시너지를 낼 수 있습니다!</p>
                     </div>
-                    <!-- 카드 2: 시간/장소 -->
                     <div class="hover-card p-6 bg-gray-700 rounded-xl border border-gray-600">
                         <i class="fas fa-clock text-2xl text-yellow-400 mb-2"></i>
                         <p class="text-base font-bold mb-1">⏰ 시간/장소</p>
                         <p class="text-gray-300 text-sm">매주 12:30–14:00 <strong>대면</strong>. 점심 식사 후<br>궁금증이 생겼을 때, 바로 옆에서 해결책을 얻을 수 있도록 모든 과정은 대면으로 진행됩니다.</p>
                     </div>
-                    <!-- 카드 3: 코칭 -->
                     <div class="hover-card p-6 bg-gray-700 rounded-xl border border-gray-600">
                         <i class="fas fa-user-tie text-2xl text-yellow-400 mb-2"></i>
                         <p class="text-base font-bold mb-1">👨‍🏫완주 페이스 메이커(w. 사내 교수님)</p>
                         <p class="text-gray-300 text-sm"> 업무에 잘 녹아들게 함께 고민하고 다듬어 주는,<br>사내 CP님들이 <strong>교수님</strong>으로 함께해요.</p>
                     </div>
-                    <!-- 카드 4: 평가 -->
                     <div class="hover-card p-6 bg-gray-700 rounded-xl border border-gray-600">
                         <i class="fas fa-check-circle text-2xl text-yellow-400 mb-2"></i>
                         <p class="text-base font-bold mb-1">✅ 매주 시도 루틴 인증</p>
                         <p class="text-gray-300 text-sm">매주 양식에 맞춰 '시도만 게시'하면 끝!<br>성공 여부보다 꾸준한 '시도' 자체가 중요합니다. (실패해도 괜찮아요!)</p>
                     </div>
-                    <!-- 카드 5: 성과 -->
                     <div class="hover-card p-6 bg-gray-700 rounded-xl border border-gray-600">
                         <i class="fas fa-seedling text-2xl text-yellow-400 mb-2"></i>
                         <p class="text-base font-bold mb-1">📈우리의 최종 결과물</p>
                         <p class="text-sm text-gray-300">
                             <strong>작은 Task 개선</strong> 경험을 모아, 그것들을 <strong>하나로 이어 붙인 자동화 작업물(Flow)</strong> 을 만드는 것이 목표입니다. 작은 성공들이 모여 큰 변화를 만듭니다.
                         </p>
-		    </div>
-                    <!-- 카드 6: 신청 조건 -->
+                    </div>
                     <div class="hover-card p-6 bg-gray-700 rounded-xl border border-gray-600">
                         <i class="fas fa-user-check text-2xl text-yellow-400 mb-2"></i>
                         <p class="text-base font-bold mb-1">🚪 신청 조건</p>
@@ -336,11 +349,9 @@
             </div>
         </section>
 
-        <!-- 6. 혜택 및 신청 자격 -->
         <section class="mb-20 scroll-reveal">
             <h2 class="text-3xl font-bold text-center mb-10 text-violet-300">CP님의 시도 완주를 돕는 최고의 환경! 🏅</h2>
             <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <!-- 혜택 1: 학점 -->
                 <div class="bg-gray-700 p-5 rounded-xl flex items-center shadow-lg border-l-4 border-yellow-400">
                     <i class="fas fa-graduation-cap text-2xl text-yellow-300 mr-4"></i>
                     <div>
@@ -348,7 +359,6 @@
                         <p class="text-sm text-gray-200">수료 시 <strong>15학점</strong> 지급</p>
                     </div>
                 </div>
-                <!-- 혜택 2: 다과 -->
                 <div class="bg-gray-700 p-5 rounded-xl flex items-center shadow-lg border-l-4 border-yellow-400">
                     <i class="fas fa-mug-hot text-2xl text-yellow-300 mr-4"></i>
                     <div>
@@ -356,7 +366,6 @@
                         <p class="text-sm text-gray-200">점심 시간 이후이니, 커피 한잔과 함께해요.</p>
                     </div>
                 </div>
-                <!-- 혜택 3: 구독료 -->
                 <div class="bg-gray-700 p-5 rounded-xl flex items-center shadow-lg border-l-4 border-yellow-400">
                     <i class="fas fa-ticket-alt text-2xl text-yellow-300 mr-4"></i>
                     <div>
@@ -366,7 +375,6 @@
                 </div>
             </div>
 
-            <!-- 지원 자격 섹션 (말랑말랑하게 수정) -->
             <div class="max-w-3xl mx-auto mt-16 p-8 bg-gray-900 rounded-2xl border border-violet-600 shadow-2xl">
                 <h3 class="text-2xl font-bold mb-4 text-violet-400 text-center">AI School에 함께 할 CP님은 이런 분이면 좋겠어요 ✨</h3>
                 <p class="text-gray-300 text-center mb-6">
@@ -393,7 +401,6 @@
             </div>
         </section>
 
-        <!-- 7. 신청 및 마무리 -->
         <section class="text-center pb-10 scroll-reveal">
             <h2 class="text-4xl font-extrabold mb-6 text-gradient">
                 🔥 AI School에서 CP님들과 함께 완주해 보아요!
@@ -401,7 +408,6 @@
             <p class="text-2xl text-gray-300 mb-8">
                 1기, 모집 인원 12명 (랜덤 선정)
             </p>
-            <!-- 신청 버튼 (Forms 링크) -->
             <a href="https://forms.office.com/r/BpBARr4kyw" target="_blank" class="inline-block px-12 py-4 text-2xl font-bold bg-violet-600 text-white rounded-full shadow-2xl hover:bg-violet-700 transition duration-300 transform hover:scale-105">
                 AI 스쿨 참가 신청하기
             </a>
@@ -413,7 +419,6 @@
             </p>
         </section>
         
-        <!-- 3. AI Loop 철학 (취지) - MOVED HERE -->
         <section class="mb-20 scroll-reveal">
             <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-violet-300">
                 <span class="text-yellow-400">한 번 만들어두면</span> 업무가 확 개선됩니다. 🚀
@@ -434,7 +439,6 @@
             </div>
         </section>
         
-        <!-- 3.5. AI 스쿨: 성공 사례 아이디어 (Motivation) -->
         <section class="mb-20 scroll-reveal">
             <h2 class="text-3xl font-bold text-center mb-10 text-violet-300">
                 <i class="fas fa-trophy mr-2 text-yellow-400"></i> 이런 것들도 만들 수 있어요!
@@ -457,7 +461,6 @@
                 </div>
             </div>
         
-        <!-- AI Lab D-Day Teaser (맨 하단으로 이동) -->
         <div id="lab-teaser" class="lab-teaser rounded-3xl p-6 mt-16 text-center scroll-reveal">
             <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-8">
                 <p class="text-xl font-bold text-gray-100 flex items-center">
@@ -478,7 +481,7 @@
     </div>
 
     <script>
-        // Scroll Reveal Logic 
+        // Scroll Reveal Logic    
         function revealElements() {
             const reveals = document.querySelectorAll('.scroll-reveal');
             
@@ -498,7 +501,7 @@
         window.addEventListener('scroll', revealElements);
         
         // 초기 로드 시 뷰포트에 보이는 요소들을 바로 애니메이션 처리
-        revealElements(); 
+        revealElements();    
     </script>
 </body>
 </html>
