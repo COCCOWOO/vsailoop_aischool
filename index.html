@@ -237,12 +237,13 @@
                 비상 AI Loop ∞: CP님의 실행과 확장 🔄
             </h2>
             <div class="loop-container">
-		<div class="loop-node loop-node-school text-white"
-		     onclick="document.getElementById('school-section').scrollIntoView({ behavior: 'smooth' });">
+		<div class="loop-node loop-node-school text-white cursor-pointer"
+		     onclick="document.getElementById('ai-school-section').scrollIntoView({ behavior: 'smooth' });">
 		    <i class="fas fa-seedling text-3xl mb-1"></i>
 		    <p class="text-3xl">AI스쿨</p>
-    <p class="text-base font-normal mt-1"><strong>작게라도 내가</strong><br><strong>직접 시도해볼 수 있을까?</strong></p>
-</div>
+		    <p class="text-base font-normal mt-1"><strong>작게라도 내가</strong><br><strong>직접 시도해볼 수 있을까?</strong></p>
+		</div>
+
 
                 
                 <div class="loop-arrow absolute top-1/2 left-0 right-0 sm:top-1/2 sm:left-auto sm:right-auto"></div>
@@ -253,6 +254,7 @@
                     <p class="text-base font-normal mt-1"><strong>조직의 고민을,</strong><br><strong>AI를 활용해 도전해볼 수 있을까?</strong></p>
                 </div>
             </div>
+
             
             <div class="max-w-4xl mx-auto mt-10 grid md:grid-cols-2 gap-6 text-left">
                 <div class="p-6 bg-gray-700/50 border border-violet-500 rounded-xl shadow-lg hover-card">
@@ -274,7 +276,29 @@
             </div>
         </section>
 
-        <section class="mb-20 text-center scroll-reveal">
+        <section class="mb-20 scroll-reveal">
+            <h2 class="text-3xl font-bold text-center mb-10 text-violet-300">
+                <i class="fas fa-trophy mr-2 text-yellow-400"></i> 이런 것들도 만들 수 있어요!
+            </h2>
+            <p class="text-lg text-gray-400 text-center max-w-4xl mx-auto mb-8">
+                작은 쪼개기 아이디어가 반복 업무를 바꿀 수 있습니다. 정말 쉽게, 이 정도의 결과를 만들어낼 수 있습니다.
+            </p>
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
+                    <h3 class="text-xl font-bold text-yellow-300 mb-2">📄 주간 보고서 자동 초안 생성 Flow</h3>
+                    <p class="text-sm text-gray-300">팀별 데이터 요약 → 주요 내용 추출 → 주간 보고서 초안까지 AI로 자동 연결</p>
+                </div>
+                <div class="p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
+                    <h3 class="text-xl font-bold text-yellow-300 mb-2">🖼️ 번거로운 이미지 일괄 리사이징/분류</h3>
+                    <p class="text-sm text-gray-300">GPT Vision을 활용해 이미지들을 자동으로 분류하고, 사이즈를 일괄 변경하는 Flow 구축</p>
+                </div>
+                <div class="p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
+                    <h3 class="text-xl font-bold text-yellow-300 mb-2">💬 고객 피드백 요약 및 감성 분석 봇</h3>
+                    <p class="text-sm text-gray-300">수집된 고객 피드백에서 핵심 키워드와 긍/부정 감성을 자동 분석하여 요약본 생성</p>
+                </div>
+            </div>
+
+        <section id="ai-school-section" class="mb-20 mt-16 text-center scroll-reveal">
             <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 text-gradient">
                 #1 AI스쿨<span class="emoji-no-gradient">🍎</span>
             </h2>
@@ -310,28 +334,6 @@
                 </div>
             </div>
         </section>
-
-        <section class="mb-20 scroll-reveal">
-            <h2 class="text-3xl font-bold text-center mb-10 text-violet-300">
-                <i class="fas fa-trophy mr-2 text-yellow-400"></i> 이런 것들도 만들 수 있어요!
-            </h2>
-            <p class="text-lg text-gray-400 text-center max-w-4xl mx-auto mb-8">
-                작은 쪼개기 아이디어가 반복 업무를 바꿀 수 있습니다. 정말 쉽게, 이 정도의 결과를 만들어낼 수 있습니다.
-            </p>
-            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <div class="p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
-                    <h3 class="text-xl font-bold text-yellow-300 mb-2">📄 주간 보고서 자동 초안 생성 Flow</h3>
-                    <p class="text-sm text-gray-300">팀별 데이터 요약 → 주요 내용 추출 → 주간 보고서 초안까지 AI로 자동 연결</p>
-                </div>
-                <div class="p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
-                    <h3 class="text-xl font-bold text-yellow-300 mb-2">🖼️ 번거로운 이미지 일괄 리사이징/분류</h3>
-                    <p class="text-sm text-gray-300">GPT Vision을 활용해 이미지들을 자동으로 분류하고, 사이즈를 일괄 변경하는 Flow 구축</p>
-                </div>
-                <div class="p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
-                    <h3 class="text-xl font-bold text-yellow-300 mb-2">💬 고객 피드백 요약 및 감성 분석 봇</h3>
-                    <p class="text-sm text-gray-300">수집된 고객 피드백에서 핵심 키워드와 긍/부정 감성을 자동 분석하여 요약본 생성</p>
-                </div>
-            </div>
 
         <section class="mb-20 scroll-reveal mt-16 scroll-reveal">
             <h2 class="text-3xl font-bold text-center mb-10 text-violet-300">이렇게 진행돼요 — 쉽게, 짧게, 꾸준히 ⚙️</h2>
