@@ -97,6 +97,34 @@
     .aligned-text{ display:flex; align-items:flex-start; line-height:1.6; }
     .aligned-text .icon-box{ display:inline-block; margin-right:.75rem; margin-top:.1rem; flex-shrink:0; font-size:1.5em; line-height:1;}
     .emoji-no-gradient{ -webkit-background-clip:unset!important; -webkit-text-fill-color:initial!important; }
+
+    /* === 📱모바일 줄바꿈/가독성 개선 === */
+    html, body {
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+      line-break: loose;
+      -webkit-hyphens: none;
+      hyphens: none;
+      text-size-adjust: 100%;
+    }
+    h1, h2, h3 {
+      text-wrap: balance;
+      -webkit-text-size-adjust: 100%;
+    }
+    p, li, a, button, span {
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+    .btn, .hover-card h3, .loop-node p {
+      word-break: keep-all !important;
+      white-space: normal;
+    }
+    @media (max-width: 360px){
+      h1 { font-size: 1.9rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.15rem; }
+      p  { font-size: 0.95rem; line-height: 1.7; }
+    }
   </style>
 </head>
 
@@ -154,30 +182,62 @@
       </div>
     </section>
 
-    <!-- 이런 것도 만들 수 있어요: STAGGER -->
-    <section class="mb-20 scroll-reveal">
-      <h2 class="text-3xl font-bold text-center mb-10 text-violet-300">
-        <i class="fas fa-trophy mr-2 text-yellow-400"></i> 이런 것들도 만들 수 있어요!
-      </h2>
-      <p class="text-lg text-gray-400 text-center max-w-4xl mx-auto mb-8">
-        작은 쪼개기 아이디어가 반복 업무를 바꿀 수 있습니다. 정말 쉽게, 이 정도의 결과를 만들어낼 수 있습니다.
-      </p>
+<!-- 이런 것도 만들 수 있어요: 나의 이야기 -->
+<section class="mb-20 scroll-reveal">
+  <h2 class="text-3xl font-bold text-center mb-10 text-violet-300">
+    <i class="fas fa-trophy mr-2 text-yellow-400"></i> 이런 것도 만들 수 있어요! ✨
+  </h2>
+  <p class="text-lg text-gray-400 text-center max-w-4xl mx-auto mb-8">
+    <strong>이건 실제 제가 해본 이야기예요.</strong><br>
+    본격적으로 배운 건 오직, 사내 <strong>생성형 AI 리터러시 과정</strong> 하나뿐이었어요.<br>
+    그 이후엔 틈틈이, 감으로, AI에게 물어보며 만들어봤습니다.
+  </p>
 
-      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" data-stagger="true">
-        <div class="stagger-item p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
-          <h3 class="text-xl font-bold text-yellow-300 mb-2">📄 주간 보고서 자동 초안 생성 Flow</h3>
-          <p class="text-sm text-gray-300">팀별 데이터 요약 → 주요 내용 추출 → 주간 보고서 초안까지 AI로 자동 연결</p>
-        </div>
-        <div class="stagger-item p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
-          <h3 class="text-xl font-bold text-yellow-300 mb-2">🖼️ 번거로운 이미지 일괄 리사이징/분류</h3>
-          <p class="text-sm text-gray-300">GPT Vision을 활용해 이미지들을 자동으로 분류하고, 사이즈를 일괄 변경하는 Flow 구축</p>
-        </div>
-        <div class="stagger-item p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
-          <h3 class="text-xl font-bold text-yellow-300 mb-2">💬 고객 피드백 요약 및 감성 분석 봇</h3>
-          <p class="text-sm text-gray-300">수집된 고객 피드백에서 핵심 키워드와 긍/부정 감성을 자동 분석하여 요약본 생성</p>
-        </div>
-      </div>
-    </section>
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto" data-stagger="true">
+    <div class="stagger-item p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
+      <h3 class="text-xl font-bold text-yellow-300 mb-2">⚙️ 반복 업무 자동화</h3>
+      <p class="text-sm text-gray-300">
+        엑셀 데이터,  파일 다운로드, 양식에 맞춘 교안 제작 등등.. 일일이 정리하던 일을 VBA, 파이썬으로 자동화했어요.  
+        매일 1시간 걸리던 일이 단 3분으로 단축했어요.(휴먼 에러 줄이기는 덤!)
+      </p>
+    </div>
+
+    <div class="stagger-item p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
+      <h3 class="text-xl font-bold text-yellow-300 mb-2">📊 보고서·대시보드 만들기</h3>
+      <p class="text-sm text-gray-300">
+        데이터셋을 직접 구성하고, 시각화로 보고서를 완성해봤어요.  
+        이런것도 되나? 가설로 쉽게 테스트를 해볼 수 있어요. 나의 데이터에 심폐소생술을 해볼 수 있게 되었습니다.
+      </p>
+    </div>
+
+    <div class="stagger-item p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
+      <h3 class="text-xl font-bold text-yellow-300 mb-2">🌐 나만의 홍보 페이지 만들기</h3>
+      <p class="text-sm text-gray-300">
+        PPT 대신 HTML로 지금 이런 교육 안내 페이지를 만들었습니다.  
+        줄바꿈 코드 원리 하나도 몰랐지만, AI에게 물어보다 보니  
+        어느새 이렇게 완성됐어요.
+      </p>
+    </div>
+
+    <div class="stagger-item p-5 bg-gray-700 rounded-xl border border-gray-600 shadow-lg">
+      <h3 class="text-xl font-bold text-yellow-300 mb-2">📱 출퇴근길 보고서 완성 루프</h3>
+      <p class="text-sm text-gray-300">
+        긴 출퇴근길, 폰으로 AI와 대화하며 보고서를 썼어요.  
+        아이디어를 정리하고 문장을 다듬는 일이  
+        이제는 어디서든 가능한 루틴이 됐습니다.
+      </p>
+    </div>
+  </div>
+
+  <p class="text-center text-gray-400 text-sm mt-10 max-w-3xl mx-auto leading-relaxed italic">
+  하다가 막히면 다른 사람들 시도를 보며 자극받았고,  
+  그러다 또 새 아이디어가 생겼습니다.<br>
+  그리고 어느새, <strong>새 서비스가 생겨가고 있습니다.</strong><br>
+  이젠, 일단 해보면 될 것 같은데? 싶어요.
+  이 판이 낯선 우리끼리 모여서, 실컷 실험하고 실컷 만들어 보아요.<br>
+  <strong>같이 하다보면 해낼 수 있습니다</strong>🌱
+ </p>
+</section>
 
     <!-- #1 AI스쿨: STAGGER -->
     <section id="ai-school-section" class="mb-20 mt-16 text-center scroll-reveal">
@@ -343,7 +403,7 @@
          class="inline-block px-12 py-4 text-2xl font-bold bg-violet-600 text-white rounded-full shadow-2xl hover:bg-violet-700 transition duration-300 transform hover:scale-105">
         AI 스쿨 참가 신청하기
       </a>
-      <p class="text-lg font-bold text-yellow-400 mt-4">대상자 발표: 11/4 (화)</p>
+      <p class="text-lg font-bold text-yellow-400 mt-4">대상자 발표: 11/4(화)</p>
       <p class="text-sm text-gray-500 mt-2">(신청 마감: 11/3(월))</p>
     </section>
 
@@ -355,7 +415,7 @@
           AI랩:<br class="sm:hidden"> 다음 단계로의 확장
         </p>
         <div class="flex items-center space-x-2">
-          <span class="text-xl font-bold text-yellow-300">2025. 11. 03. COMING SOON</span>
+          <span class="text-xl font-bold text-yellow-300">2025. 11. COMING SOON</span>
         </div>
       </div>
       <p class="text-sm text-gray-400 mt-3">
@@ -411,5 +471,4 @@
   </script>
 </body>
 </html>
-
 
